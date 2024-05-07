@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Facebook Marketplace Synching Extension",
+    "version": "1.0",
+    "description": "A basic Chrome extension to synch messages from Facebook Marketplace to Vettx API",
+    "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "browser_action": {
+      "default_icon": "icon48.png",
+      "default_popup": "popup.html"
+    },
+    "permissions": ["activeTab"],
+    "content_scripts": [
+      {
+        "js": ["contentScript.js"]
+      }
+    ]
+  }
