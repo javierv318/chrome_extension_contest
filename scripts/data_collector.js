@@ -1,17 +1,13 @@
 const puppeteer = require('puppeteer');
-
 /*
 
 MADE WITH THE HELP OF BLACKBOX AI
 IT IS NOT TESTED AND IS IN VERIFICATION PROCESS.
 
 */
-async function scrapeFacebookMessages() {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-
+async function scrapeFacebookMessages(page) {
   // Replace 'your-marketplace-conversation-url' with the URL of the Facebook Marketplace conversation you want to scrape
-  await page.goto('');
+  await page.goto('https://www.facebook.com/messages/t/');
 
   // Wait for the messages to load
   await page.waitForSelector('.fbNubFruitSystem fbNubFruitMessage');
