@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     await page.waitForNavigation();
 
     // Wait for the messages to load
-    await page.waitForSelector('.fbNubFruitSystem fbNubFruitMessage');
+    await page.waitForSelector('div:nth-of-type(1) > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div > span > div:nth-of-type(2) > div:nth-of-type(1)');
 
     // Start the message retrieval loop
     retrieveMessages();
@@ -33,7 +33,7 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
 async function retrieveMessages() {
   // Extract the most recent message
   const message = await page.evaluate(() => {
-    const messageNodes = Array.from(document.querySelectorAll('.fbNubFruitSystem fbNubFruitMessage'));
+    const messageNodes = Array.from(document.querySelectorAll('div:nth-of-type(1) > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div > span > div:nth-of-type(2) > div:nth-of-type(1)'));
 
     if (messageNodes.length === 0) {
       return {
@@ -53,9 +53,9 @@ async function retrieveMessages() {
       };
     }
 
-    const sender = mostRecentMessage.querySelector('.fbNubFruitMessageSenderName')?.innerText.trim();
-    const date = mostRecentMessage.querySelector('.fcg')?.innerText.trim();
-    const messageText = mostRecentMessage.querySelector('.selectableText')?.innerText.trim();
+    const sender = mostRecentMessage.querySelector('div:nth-of-type(1) > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > div > div > div > div > div > div > div > div:nth-of-type(3) > div > div:nth-of-type(24) > div > div > div:nth-of-type(1) > span')?.innerText.trim();
+    const date = mostRecentMessage.querySelector('div:nth-of-type(1) > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div > span')?.innerText.trim();
+    const messageText = mostRecentMessage.querySelector('div:nth-of-type(1) > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div > span > div:nth-of-type(2) > div:nth-of-type(1) > div > span > div')?.innerText.trim();
 
     return {
       sender,
@@ -76,3 +76,4 @@ async function retrieveMessages() {
   // Continue the message retrieval loop
   retrieveMessages();
 }
+
